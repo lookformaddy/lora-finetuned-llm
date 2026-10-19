@@ -1,0 +1,41 @@
+{
+  "dataset": {
+    "train": 576,
+    "val": 96,
+    "test": 96
+  },
+  "vocab_size": 510,
+  "total_params": 548736,
+  "trainable": {
+    "lora_params": 12288,
+    "modules_to_save_params": 65280
+  },
+  "adapter_bytes": 314684,
+  "merged_model_bytes": 2213109,
+  "pretrain_seconds": 11.2,
+  "finetune_seconds": 57.9,
+  "base": {
+    "n": 96,
+    "format_compliance": 0.0,
+    "category_accuracy": 0.0,
+    "priority_accuracy": 0.0,
+    "action_token_f1": 0.0,
+    "exact_match": 0.0
+  },
+  "lora_tuned": {
+    "n": 96,
+    "format_compliance": 1.0,
+    "category_accuracy": 0.9792,
+    "priority_accuracy": 1.0,
+    "action_token_f1": 0.9334,
+    "exact_match": 0.3229
+  },
+  "merged": {
+    "n": 96,
+    "format_compliance": 1.0,
+    "category_accuracy": 0.9792,
+    "priority_accuracy": 1.0,
+    "action_token_f1": 0.9334,
+    "exact_match": 0.3229
+  }
+}

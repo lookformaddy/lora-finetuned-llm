@@ -1,0 +1,18 @@
+{
+  "base": {
+    "n": 96,
+    "format_compliance": 0.0,
+    "category_accuracy": 0.0,
+    "priority_accuracy": 0.0,
+    "action_token_f1": 0.0,
+    "exact_match": 0.0
+  },
+  "lora_tuned": {
+    "n": 96,
+    "format_compliance": 1.0,
+    "category_accuracy": 0.9792,
+    "priority_accuracy": 1.0,
+    "action_token_f1": 0.9334,
+    "exact_match": 0.3229
+  }
+}

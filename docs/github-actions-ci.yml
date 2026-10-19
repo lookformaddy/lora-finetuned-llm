@@ -1,0 +1,42 @@
+# GitHub Actions CI for this project.
+#
+# NOTE: this file lives under docs/ on purpose. To enable it, move it to
+# .github/workflows/ci.yml in the repository — GitHub only discovers
+# workflow files in that location.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test-and-train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies (CPU-only torch)
+        run: |
+          pip install --index-url https://download.pytorch.org/whl/cpu torch
+          pip install -e ".[dev]"
+
+      - name: Run test suite
+        run: pytest -q
+
+      - name: Smoke-run the full pipeline (reduced epochs)
+        run: python scripts/train.py --pretrain-epochs 1 --finetune-epochs 4
+
+      - name: Upload experiment report
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment-report
+          path: |
+            reports/experiment_report.md
+            reports/metrics.json
+            reports/training_log.csv
